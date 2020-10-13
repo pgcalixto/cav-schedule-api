@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  server:
+    container_name: NODEJS_SERVER
+    build: '.'
+    env_file: .env.dev
+    depends_on:
+      - db
+    ports:
+      - '5000:5000'
+
+  db:
+    image: 'mongo:4.4'
+    container_name: MONGODB
+    ports:
+      - '27017:27017'
+    volumes:
+      - ./data/db:/data/db
