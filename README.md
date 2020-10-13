@@ -8,7 +8,7 @@ TODO:
 - [x] Solução dockerizada em Docker Compose
 - [x] Autenticação na API (jwt)
 - [x] Configurar linter
-- [ ] Integração contínua (GitHub actions)
+- [x] Integração contínua (GitHub actions)
 - [ ] Documentação no README
 - [ ] Documentação da API (Swagger)
 - [ ] Testes unitários
