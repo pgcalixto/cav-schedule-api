@@ -13,3 +13,4 @@ TODO:
 - [ ] Documentação da API (Swagger)
 - [ ] Testes unitários
 - [ ] Testes de API
+- [ ] Estabelecer uma métrica mínima obrigatória de cobertura
