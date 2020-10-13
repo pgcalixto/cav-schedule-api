@@ -1,10 +1,18 @@
-FROM node:12
+FROM node:12-alpine
 
 WORKDIR /usr/src/app
 
 COPY package*.json ./
 
-RUN npm install
+RUN apk add --no-cache \
+    make \
+    python3 \
+ \
+ && npm install \
+ \
+ && apk del \
+    make \
+    python3
 
 COPY . .
 
