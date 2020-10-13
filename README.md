@@ -4,7 +4,7 @@ CAV Schedule API
 
 TODO:
 - [x] Licença de código aberto
-- [ ] Validação de parâmetros da requisição HTTP (Joi)
+- [x] Validação de parâmetros da requisição HTTP (Joi)
 - [ ] Solução dockerizada em Docker Compose
 - [ ] Autenticação na API (jwt)
 - [ ] Configurar linter

@@ -1,6 +1,8 @@
+import { connection as dbConnection } from "./src/infra/mongoDB";
 import * as restify from "restify";
 import corsMiddleware from "restify-cors-middleware";
 import logger from "./src/services/loggerService";
+import carRoutes from "./src/routes/carRoutes";
 
 const PORT = process.env.PORT || 5000;
 
@@ -18,6 +20,8 @@ function setupServer() {
   server.use(cors.actual);
   server.use(restify.plugins.bodyParser({ mapParams: true }));
 
+  carRoutes.set(server);
+
   server.listen(PORT, function () {
     console.log("%s listening at %s", server.name, server.url);
   });
@@ -25,6 +29,8 @@ function setupServer() {
 
 async function main() {
   try {
+    await dbConnection;
+
     setupServer();
   } catch (err) {
     logger.error(err);
