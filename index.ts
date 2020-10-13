@@ -3,6 +3,7 @@ import * as restify from "restify";
 import corsMiddleware from "restify-cors-middleware";
 import logger from "./src/services/loggerService";
 import carRoutes from "./src/routes/carRoutes";
+import cavRoutes from "./src/routes/cavRoutes";
 
 const PORT = process.env.PORT || 5000;
 
@@ -21,6 +22,7 @@ function setupServer() {
   server.use(restify.plugins.bodyParser({ mapParams: true }));
 
   carRoutes.set(server);
+  cavRoutes.set(server);
 
   server.listen(PORT, function () {
     console.log("%s listening at %s", server.name, server.url);
