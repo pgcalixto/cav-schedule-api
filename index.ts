@@ -5,6 +5,7 @@ import logger from "./src/services/loggerService";
 import authRoutes from "./src/routes/authRoutes";
 import carRoutes from "./src/routes/carRoutes";
 import cavRoutes from "./src/routes/cavRoutes";
+import scheduleRoutes from "./src/routes/scheduleRoutes";
 import userRoutes from "./src/routes/userRoutes";
 
 const PORT = process.env.PORT || 5000;
@@ -26,6 +27,7 @@ function setupServer() {
   authRoutes.set(server);
   carRoutes.set(server);
   cavRoutes.set(server);
+  scheduleRoutes.set(server);
   userRoutes.set(server);
 
   server.listen(PORT, function () {
