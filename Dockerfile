@@ -10,4 +10,6 @@ COPY . .
 
 RUN npm run build
 
-CMD npm start
+# TODO: multi-stage build + npm prune --production
+
+CMD npm run initDb && npm start
