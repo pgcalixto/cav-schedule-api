@@ -14,4 +14,8 @@ TODO:
 - [ ] Documentação da API (Swagger)
 - [ ] Testes unitários
 - [x] Testes de API (car, cav, schedule)
+- [ ] Testes de API (auth, user)
+- [ ] Reforçar testes de API existentes (forçar parâmetros inválidos, _corner
+      cases_)
+- [ ] Gerar dados aleatórios para testes de API (faker.js)
 - [ ] Estabelecer uma métrica mínima obrigatória de cobertura
