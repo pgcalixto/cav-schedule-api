@@ -3,11 +3,40 @@
 CAV Schedule API: API para agendamento de visitas e gerenciamento de centros de
 atendimento.
 
+[Documentação da API](https://pgcalixto.github.io/cav-schedule-api/)
+
 ## Requerimentos
 
 - [Node](https://nodejs.org/) 12+
 - [MongoDB](https://www.mongodb.com/) 4.4
 - [Docker](https://www.docker.com/) 19+ _(opcional)_
+
+## Guia rápido
+
+Para rodar a versão conteinerizada da aplicação, populando o banco com dados com
+valores iniciais, basta executar:
+
+```
+docker-compose up
+docker-compose down
+npm run test:integration:docker
+```
+
+Isso abre as portas 5000 para o servidor e 27017 para o banco de dados.
+
+Todos os _endpoints_ (exceto `/login` e `/logout`) necessitam de um token válido
+passando no header `x-access-token`. Para obter o token, deve-se acessar a
+`/login` passando email e senha. Nesse ambiente conteinerizado para
+desenvolvimento, já existe um usuário e senha pré-configurados para isso.
+
+```
+{ "email": "fake@test.com", "password": "fakepasswd123" }
+```
+
+Na documentação estão listados quais endpoints existem e como realizar as
+operações desejadas:
+
+- https://pgcalixto.github.io/cav-schedule-api/
 
 ## Uso
 
@@ -72,8 +101,8 @@ TODO:
 - [x] Autenticação na API (jwt)
 - [x] Configurar linter
 - [x] Integração contínua (GitHub actions)
-- [ ] Documentação no README
-- [ ] Documentação da API (Swagger)
+- [x] Documentação no README
+- [x] Documentação da API (Swagger)
 - [ ] Testes unitários
 - [x] Testes de API (car, cav, schedule)
 - [ ] Testes de API (auth, user)
