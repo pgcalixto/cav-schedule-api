@@ -1,0 +1,1020 @@
+---
+openapi: "3.0.0"
+info:
+  title: "CAV Schedule API"
+  description: "API para agendamento de visitas e gerenciamento\nde centros de atendimento.\n"
+  license:
+    name: "GNU GPLv3"
+    url: "http://www.gnu.org/licenses/gpl-3.0.en.html"
+  version: "1.0.0"
+servers:
+- url: "https://virtserver.swaggerhub.com/pgcalixto/CAV-Schedule-API/1.0.0"
+  description: "SwaggerHub API Auto Mocking"
+tags:
+- name: "auth"
+  description: "Autenticação"
+- name: "cars"
+  description: "Gerenciamento de carros"
+- name: "cavs"
+  description: "Gerenciamento de CAVs"
+- name: "users"
+  description: "Operações sobre usuários"
+- name: "schedules"
+  description: "Agendamento e consulta de horários"
+paths:
+  /cars:
+    get:
+      tags:
+      - "cars"
+      summary: "Obter dados de todos os carros"
+      parameters:
+      - name: "x-access-token"
+        in: "header"
+        description: "Token de acesso"
+        required: true
+        style: "simple"
+        explode: false
+        schema:
+          type: "string"
+      responses:
+        "200":
+          description: "Ok"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Cars"
+        "401":
+          description: "Token não foi passado ou usuário não existe"
+      security:
+      - x_access_token: []
+    post:
+      tags:
+      - "cars"
+      summary: "Adicionar um novo carro"
+      parameters:
+      - name: "x-access-token"
+        in: "header"
+        description: "Token de acesso"
+        required: true
+        style: "simple"
+        explode: false
+        schema:
+          type: "string"
+      requestBody:
+        $ref: "#/components/requestBodies/Car"
+      responses:
+        "201":
+          description: "Criado"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CarWithId"
+        "400":
+          description: "Parâmetros errados"
+        "401":
+          description: "Token não foi passado ou usuário não existe"
+        "404":
+          description: "CAV não existe"
+      security:
+      - x_access_token: []
+  /cars/{carId}:
+    get:
+      tags:
+      - "cars"
+      summary: "Obtenha dados de um carros"
+      parameters:
+      - name: "x-access-token"
+        in: "header"
+        description: "Token de acesso"
+        required: true
+        style: "simple"
+        explode: false
+        schema:
+          type: "string"
+      - name: "carId"
+        in: "path"
+        description: "Carro desejado"
+        required: true
+        style: "simple"
+        explode: false
+        schema:
+          type: "integer"
+      responses:
+        "200":
+          description: "Ok"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Car"
+        "401":
+          description: "Token não foi passado ou usuário não existe"
+        "404":
+          description: "Carro não existe"
+      security:
+      - x_access_token: []
+    put:
+      tags:
+      - "cars"
+      summary: "Atualizar um carro existente"
+      parameters:
+      - name: "x-access-token"
+        in: "header"
+        description: "Token de acesso"
+        required: true
+        style: "simple"
+        explode: false
+        schema:
+          type: "string"
+      - name: "carId"
+        in: "path"
+        description: "Carro desejado"
+        required: true
+        style: "simple"
+        explode: false
+        schema:
+          type: "integer"
+      requestBody:
+        $ref: "#/components/requestBodies/Car"
+      responses:
+        "200":
+          description: "Ok"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Car"
+        "400":
+          description: "Parâmetros errados"
+        "404":
+          description: "Carro não existe ou CAV não existe"
+        "405":
+          description: "Token não foi passado ou usuário não existe"
+      security:
+      - x_access_token: []
+  /cavs:
+    get:
+      tags:
+      - "cavs"
+      summary: "Obter dados de todos os CAVs"
+      parameters:
+      - name: "x-access-token"
+        in: "header"
+        description: "Token de acesso"
+        required: true
+        style: "simple"
+        explode: false
+        schema:
+          type: "string"
+      responses:
+        "200":
+          description: "Ok"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Cavs"
+        "401":
+          description: "Token não foi passado ou usuário não existe"
+      security:
+      - x_access_token: []
+    post:
+      tags:
+      - "cavs"
+      summary: "Adicionar um novo CAV"
+      parameters:
+      - name: "x-access-token"
+        in: "header"
+        description: "Token de acesso"
+        required: true
+        style: "simple"
+        explode: false
+        schema:
+          type: "string"
+      requestBody:
+        $ref: "#/components/requestBodies/Cav"
+      responses:
+        "201":
+          description: "Criado"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CavWithId"
+        "400":
+          description: "Parâmetros errados"
+        "401":
+          description: "Token não foi passado ou usuário não existe"
+      security:
+      - x_access_token: []
+  /cavs/{cavName}:
+    get:
+      tags:
+      - "cavs"
+      summary: "Obtenha dados de um CAV"
+      parameters:
+      - name: "x-access-token"
+        in: "header"
+        description: "Token de acesso"
+        required: true
+        style: "simple"
+        explode: false
+        schema:
+          type: "string"
+      - name: "cavName"
+        in: "path"
+        description: "CAV desejado"
+        required: true
+        style: "simple"
+        explode: false
+        schema:
+          type: "string"
+      responses:
+        "200":
+          description: "Ok"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Car"
+        "401":
+          description: "Token não foi passado ou usuário não existe"
+        "404":
+          description: "Carro não existe"
+      security:
+      - x_access_token: []
+    put:
+      tags:
+      - "cavs"
+      summary: "Atualizar um CAV existente"
+      parameters:
+      - name: "x-access-token"
+        in: "header"
+        description: "Token de acesso"
+        required: true
+        style: "simple"
+        explode: false
+        schema:
+          type: "string"
+      - name: "cavName"
+        in: "path"
+        description: "CAV desejado"
+        required: true
+        style: "simple"
+        explode: false
+        schema:
+          type: "string"
+      requestBody:
+        $ref: "#/components/requestBodies/Cav"
+      responses:
+        "200":
+          description: "Ok"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Cav"
+        "400":
+          description: "Parâmetros errados"
+        "404":
+          description: "Carro não existe"
+        "405":
+          description: "Token não foi passado ou usuário não existe"
+      security:
+      - x_access_token: []
+  /users:
+    get:
+      tags:
+      - "users"
+      summary: "Obter dados de todos os usuários"
+      parameters:
+      - name: "x-access-token"
+        in: "header"
+        description: "Token de acesso"
+        required: true
+        style: "simple"
+        explode: false
+        schema:
+          type: "string"
+      responses:
+        "200":
+          description: "Ok"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Users"
+        "401":
+          description: "Token não foi passado ou usuário não existe"
+      security:
+      - x_access_token: []
+    post:
+      tags:
+      - "users"
+      summary: "Adicionar um novo usuário"
+      parameters:
+      - name: "x-access-token"
+        in: "header"
+        description: "Token de acesso"
+        required: true
+        style: "simple"
+        explode: false
+        schema:
+          type: "string"
+      requestBody:
+        $ref: "#/components/requestBodies/User"
+      responses:
+        "201":
+          description: "Criado"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserWithId"
+        "400":
+          description: "Parâmetros errados"
+        "401":
+          description: "Token não foi passado ou usuário não existe"
+        "409":
+          description: "Usuário já existente com o email desejado"
+      security:
+      - x_access_token: []
+  /users/{userId}:
+    get:
+      tags:
+      - "users"
+      summary: "Obtenha dados de um usuário"
+      parameters:
+      - name: "x-access-token"
+        in: "header"
+        description: "Token de acesso"
+        required: true
+        style: "simple"
+        explode: false
+        schema:
+          type: "string"
+      - name: "userId"
+        in: "path"
+        description: "Usuário desejado"
+        required: true
+        style: "simple"
+        explode: false
+        schema:
+          type: "integer"
+      responses:
+        "200":
+          description: "Ok"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+        "401":
+          description: "Token não foi passado ou usuário não existe"
+        "404":
+          description: "Usuário não existe"
+      security:
+      - x_access_token: []
+    put:
+      tags:
+      - "users"
+      summary: "Atualizar um usuário existente"
+      parameters:
+      - name: "x-access-token"
+        in: "header"
+        description: "Token de acesso"
+        required: true
+        style: "simple"
+        explode: false
+        schema:
+          type: "string"
+      - name: "userId"
+        in: "path"
+        description: "Usuário"
+        required: true
+        style: "simple"
+        explode: false
+        schema:
+          type: "integer"
+      requestBody:
+        $ref: "#/components/requestBodies/User"
+      responses:
+        "200":
+          description: "Ok"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/User"
+        "400":
+          description: "Parâmetros errados"
+        "404":
+          description: "Usuário não existe"
+        "405":
+          description: "Token não foi passado ou usuário não existe"
+      security:
+      - x_access_token: []
+  /schedules/{date}:
+    get:
+      tags:
+      - "schedules"
+      summary: "Obtenha os horários de um dia"
+      parameters:
+      - name: "x-access-token"
+        in: "header"
+        description: "Token de acesso"
+        required: true
+        style: "simple"
+        explode: false
+        schema:
+          type: "string"
+      - name: "date"
+        in: "path"
+        description: "Dia"
+        required: true
+        style: "simple"
+        explode: false
+        schema:
+          type: "string"
+          format: "date"
+          example: "2019-07-17"
+      responses:
+        "200":
+          description: "Ok"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Schedule"
+        "401":
+          description: "Token não foi passado ou usuário não existe"
+      security:
+      - x_access_token: []
+  /schedules/{date}/{cav}:
+    get:
+      tags:
+      - "schedules"
+      summary: "Obtenha os horários de um dia e CAV"
+      parameters:
+      - name: "x-access-token"
+        in: "header"
+        description: "Token de acesso"
+        required: true
+        style: "simple"
+        explode: false
+        schema:
+          type: "string"
+      - name: "date"
+        in: "path"
+        description: "Dia"
+        required: true
+        style: "simple"
+        explode: false
+        schema:
+          type: "string"
+          format: "date"
+          example: "2019-07-17"
+      - name: "cav"
+        in: "path"
+        description: "CAV"
+        required: true
+        style: "simple"
+        explode: false
+        schema:
+          type: "string"
+      responses:
+        "200":
+          description: "Ok"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ScheduleCav"
+        "401":
+          description: "Token não foi passado ou usuário não existe"
+      security:
+      - x_access_token: []
+  /schedules/{date}/{cav}/{eventType}:
+    get:
+      tags:
+      - "schedules"
+      summary: "Obtenha os horários de um dia, CAV e tipo de evento"
+      parameters:
+      - name: "x-access-token"
+        in: "header"
+        description: "Token de acesso"
+        required: true
+        style: "simple"
+        explode: false
+        schema:
+          type: "string"
+      - name: "date"
+        in: "path"
+        description: "Dia"
+        required: true
+        style: "simple"
+        explode: false
+        schema:
+          type: "string"
+          format: "date"
+          example: "2019-07-17"
+      - name: "cav"
+        in: "path"
+        description: "CAV"
+        required: true
+        style: "simple"
+        explode: false
+        schema:
+          type: "string"
+      - name: "eventType"
+        in: "path"
+        description: "Tipo de evento (visita/inspeção)"
+        required: true
+        style: "simple"
+        explode: false
+        schema:
+          type: "string"
+          enum:
+          - "visit"
+          - "inspection"
+      responses:
+        "200":
+          description: "Ok"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ScheduleCavEventType"
+        "401":
+          description: "Token não foi passado ou usuário não existe"
+      security:
+      - x_access_token: []
+  /schedules/{date}/{cav}/{eventType}/{hour}:
+    get:
+      tags:
+      - "schedules"
+      summary: "Obtenha os horários de um dia, CAV, tipo de evento e hora"
+      parameters:
+      - name: "x-access-token"
+        in: "header"
+        description: "Token de acesso"
+        required: true
+        style: "simple"
+        explode: false
+        schema:
+          type: "string"
+      - name: "date"
+        in: "path"
+        description: "Dia"
+        required: true
+        style: "simple"
+        explode: false
+        schema:
+          type: "string"
+          format: "date"
+          example: "2019-07-17"
+      - name: "cav"
+        in: "path"
+        description: "CAV"
+        required: true
+        style: "simple"
+        explode: false
+        schema:
+          type: "string"
+      - name: "eventType"
+        in: "path"
+        description: "Tipo de evento (visita/inspeção)"
+        required: true
+        style: "simple"
+        explode: false
+        schema:
+          type: "string"
+          enum:
+          - "visit"
+          - "inspection"
+      - name: "hour"
+        in: "path"
+        description: "Hora do dia"
+        required: true
+        style: "simple"
+        explode: false
+        schema:
+          maximum: 17
+          minimum: 1E+1
+          type: "integer"
+      responses:
+        "200":
+          description: "Ok"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ScheduleCavEventTypeHour"
+        "401":
+          description: "Token não foi passado ou usuário não existe"
+      security:
+      - x_access_token: []
+    put:
+      tags:
+      - "schedules"
+      summary: "Agende um horário"
+      parameters:
+      - name: "x-access-token"
+        in: "header"
+        description: "Token de acesso"
+        required: true
+        style: "simple"
+        explode: false
+        schema:
+          type: "string"
+      - name: "date"
+        in: "path"
+        description: "Dia"
+        required: true
+        style: "simple"
+        explode: false
+        schema:
+          type: "string"
+          format: "date"
+          example: "2019-07-17"
+      - name: "cav"
+        in: "path"
+        description: "CAV"
+        required: true
+        style: "simple"
+        explode: false
+        schema:
+          type: "string"
+      - name: "eventType"
+        in: "path"
+        description: "Tipo de evento (visita/inspeção)"
+        required: true
+        style: "simple"
+        explode: false
+        schema:
+          type: "string"
+          enum:
+          - "visit"
+          - "inspection"
+      - name: "hour"
+        in: "path"
+        description: "Hora do dia"
+        required: true
+        style: "simple"
+        explode: false
+        schema:
+          maximum: 17
+          minimum: 1E+1
+          type: "integer"
+      requestBody:
+        $ref: "#/components/requestBodies/CarIdObject"
+      responses:
+        "200":
+          description: "Ok"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ScheduleCav"
+        "401":
+          description: "Token não foi passado ou usuário não existe"
+        "404":
+          description: "Carro ou CAV não existe"
+        "409":
+          description: "Carro não corresponde ao CAV"
+      security:
+      - x_access_token: []
+    delete:
+      tags:
+      - "schedules"
+      summary: "Libere um horário"
+      parameters:
+      - name: "x-access-token"
+        in: "header"
+        description: "Token de acesso"
+        required: true
+        style: "simple"
+        explode: false
+        schema:
+          type: "string"
+      - name: "date"
+        in: "path"
+        description: "Dia"
+        required: true
+        style: "simple"
+        explode: false
+        schema:
+          type: "string"
+          format: "date"
+          example: "2019-07-17"
+      - name: "cav"
+        in: "path"
+        description: "CAV"
+        required: true
+        style: "simple"
+        explode: false
+        schema:
+          type: "string"
+      - name: "eventType"
+        in: "path"
+        description: "Tipo de evento (visita/inspeção)"
+        required: true
+        style: "simple"
+        explode: false
+        schema:
+          type: "string"
+          enum:
+          - "visit"
+          - "inspection"
+      - name: "hour"
+        in: "path"
+        description: "Hora do dia"
+        required: true
+        style: "simple"
+        explode: false
+        schema:
+          maximum: 17
+          minimum: 1E+1
+          type: "integer"
+      responses:
+        "200":
+          description: "Ok"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ScheduleCav"
+        "401":
+          description: "Token não foi passado ou usuário não existe"
+      security:
+      - x_access_token: []
+  /login:
+    post:
+      tags:
+      - "auth"
+      summary: "Login de usuário"
+      requestBody:
+        $ref: "#/components/requestBodies/Auth"
+      responses:
+        "200":
+          description: "Ok"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Auth"
+        "401":
+          description: "Credenciais inválidas"
+  /logout:
+    post:
+      tags:
+      - "auth"
+      summary: "Logout de usuário"
+      responses:
+        "200":
+          description: "Ok"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AuthLogout"
+components:
+  schemas:
+    Car:
+      type: "object"
+      properties:
+        brand:
+          type: "string"
+          description: "Marca do carro"
+          example: "VW"
+        model:
+          type: "string"
+          description: "Modelo do carro"
+          example: "Kombi"
+        cav:
+          type: "string"
+          description: "CAV a qual pertence o carro"
+          example: "Botafogo"
+    CarWithId:
+      type: "object"
+      properties:
+        id:
+          type: "integer"
+          example: 1
+        brand:
+          type: "string"
+          description: "Marca do carro"
+        model:
+          type: "string"
+          description: "Modelo do carro"
+        cav:
+          type: "string"
+          description: "CAV a qual pertence o carro"
+    Cars:
+      type: "array"
+      items:
+        $ref: "#/components/schemas/CarWithId"
+    Cav:
+      type: "object"
+      properties:
+        name:
+          type: "string"
+          description: "Nome da CAV (localização)"
+          example: "Botafogo"
+    CavWithId:
+      type: "object"
+      properties:
+        id:
+          type: "integer"
+          example: 1
+        name:
+          type: "string"
+          description: "Nome da CAV (localização)"
+          example: "Botafogo"
+    Cavs:
+      type: "array"
+      items:
+        $ref: "#/components/schemas/CavWithId"
+    User:
+      type: "object"
+      properties:
+        email:
+          type: "string"
+          example: "fake@test.com"
+        password:
+          type: "string"
+          example: "fakepasswd123"
+    UserWithId:
+      type: "object"
+      properties:
+        email:
+          type: "string"
+          example: "fake@test.com"
+        password:
+          type: "string"
+          example: "fakepasswd123"
+    CarIdObject:
+      type: "object"
+      properties:
+        car:
+          type: "integer"
+          example: 1
+    EventTypeSchedule:
+      type: "object"
+      additionalProperties:
+        $ref: "#/components/schemas/CarIdObject"
+      example:
+        "10":
+          car: 3
+        "11":
+          car: 4
+    CavSchedule:
+      type: "object"
+      properties:
+        visit:
+          $ref: "#/components/schemas/EventTypeSchedule"
+        inspection:
+          $ref: "#/components/schemas/EventTypeSchedule"
+      example:
+        visit:
+          "10":
+            car: 3
+          "11":
+            car: 4
+        inspection:
+          "16":
+            car: 1
+          "17":
+            car: 2
+    Schedule:
+      type: "object"
+      properties:
+        date:
+          type: "string"
+          format: "date"
+        cav:
+          type: "object"
+          additionalProperties:
+            $ref: "#/components/schemas/CavSchedule"
+          example:
+            Botafogo:
+              visit:
+                "10":
+                  car: 3
+                "11":
+                  car: 4
+              inspection:
+                "16":
+                  car: 1
+                "17":
+                  car: 2
+            Barra da TIjuca:
+              visit:
+                "10":
+                  car: 10
+                "11":
+                  car: 11
+              inspection:
+                "16":
+                  car: 12
+                "17":
+                  car: 13
+    ScheduleCav:
+      type: "object"
+      properties:
+        date:
+          type: "string"
+          format: "date"
+        cav:
+          type: "object"
+          additionalProperties:
+            $ref: "#/components/schemas/CavSchedule"
+          example:
+            Botafogo:
+              visit:
+                "10":
+                  car: 3
+                "11":
+                  car: 4
+              inspection:
+                "16":
+                  car: 1
+                "17":
+                  car: 2
+    ScheduleCavEventType:
+      type: "object"
+      properties:
+        date:
+          type: "string"
+          format: "date"
+        cav:
+          type: "object"
+          additionalProperties:
+            $ref: "#/components/schemas/CavSchedule"
+          example:
+            Botafogo:
+              visit:
+                "10":
+                  car: 3
+                "11":
+                  car: 4
+    ScheduleCavEventTypeHour:
+      type: "object"
+      properties:
+        date:
+          type: "string"
+          format: "date"
+        cav:
+          type: "object"
+          additionalProperties:
+            $ref: "#/components/schemas/CavSchedule"
+          example:
+            Botafogo:
+              visit:
+                "10":
+                  car: 3
+    Users:
+      type: "array"
+      items:
+        $ref: "#/components/schemas/UserWithId"
+    Auth:
+      type: "object"
+      properties:
+        auth:
+          type: "boolean"
+          example: true
+        token:
+          type: "string"
+          example: "xxxxx.yyyyy.zzzzz"
+    AuthLogout:
+      type: "object"
+      properties:
+        auth:
+          type: "boolean"
+          example: false
+        token:
+          type: "string"
+          nullable: true
+  requestBodies:
+    Car:
+      description: "Carro a ser adicionado/atualizado"
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Car"
+      required: true
+    CarIdObject:
+      description: "Carro a ser agendado"
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/CarIdObject"
+      required: true
+    Cav:
+      description: "Carro a ser adicionado/atualizado"
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Cav"
+      required: true
+    User:
+      description: "Usuário a ser adicionado/atualizado"
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/User"
+      required: true
+    Auth:
+      description: "Usuário cadastrado"
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/User"
+      required: true
+  securitySchemes:
+    x_access_token:
+      type: "apiKey"
+      name: "x-access-token"
+      in: "header"
