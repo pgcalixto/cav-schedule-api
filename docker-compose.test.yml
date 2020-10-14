@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  server:
+    container_name: NODEJS_SERVER
+    build:
+      context: .
+      dockerfile: Dockerfile-test
+    env_file: .env.test
+    depends_on:
+      - db
+    command: npm run test:integration
+
+  db:
+    image: 'mongo:4.4'
+    container_name: MONGODB

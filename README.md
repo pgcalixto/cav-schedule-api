@@ -3,6 +3,7 @@
 CAV Schedule API
 
 TODO:
+
 - [x] Licença de código aberto
 - [x] Validação de parâmetros da requisição HTTP (Joi)
 - [x] Solução dockerizada em Docker Compose
@@ -12,5 +13,5 @@ TODO:
 - [ ] Documentação no README
 - [ ] Documentação da API (Swagger)
 - [ ] Testes unitários
-- [ ] Testes de API
+- [x] Testes de API (car, cav, schedule)
 - [ ] Estabelecer uma métrica mínima obrigatória de cobertura

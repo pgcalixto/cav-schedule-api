@@ -9,7 +9,10 @@ const {
   MONGO_PASSWORD: password,
 } = process.env;
 
-const uri = `mongodb://${username}:${password}@${hostname}:${port}/${dbName}`;
+const uri =
+  process.env.NODE_ENV === "test"
+    ? `mongodb://${hostname}:${port}/${dbName}`
+    : `mongodb://${username}:${password}@${hostname}:${port}/${dbName}`;
 
 export const connection = mongoose.connect(uri, {
   useCreateIndex: true,
@@ -17,5 +20,11 @@ export const connection = mongoose.connect(uri, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
+
+export async function disconnect(): Promise<void> {
+  if (mongoose.connection.readyState !== 0) {
+    return mongoose.disconnect();
+  }
+}
 
 autoIncrement.initialize(mongoose.connection);
