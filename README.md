@@ -8,7 +8,7 @@ atendimento.
 ## Requerimentos
 
 - [Node](https://nodejs.org/) 12+
-- [MongoDB](https://www.mongodb.com/) 4.4
+- [MongoDB](https://www.mongodb.com/) 4.4 _(opcional)_
 - [Docker](https://www.docker.com/) 19+ _(opcional)_
 
 ## Guia rápido
