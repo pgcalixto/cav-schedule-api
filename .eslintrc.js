@@ -49,12 +49,4 @@ module.exports = {
       },
     ],
   },
-  overrides: [
-    {
-      files: ["*.test.js"],
-      rules: {
-        "no-unused-vars": "off",
-      },
-    },
-  ],
 };
