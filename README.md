@@ -81,3 +81,4 @@ TODO:
       cases_)
 - [ ] Gerar dados aleatórios para testes de API (faker.js)
 - [ ] Estabelecer uma métrica mínima obrigatória de cobertura
+- [ ] Salvar de forma segura a senha de usuário no banco (hash + salt?)
