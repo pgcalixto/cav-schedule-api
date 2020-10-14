@@ -104,3 +104,4 @@ typings/
 *.js
 !.eslintrc.js
 !jest.config.js
+!dist/*.js
