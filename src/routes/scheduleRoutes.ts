@@ -5,42 +5,42 @@ import scheduleValidator from "../validators/scheduleValidator";
 
 function set(server: restify.Server): void {
   server.get(
-    "/dates",
+    "/schedules",
     authValidator.validateJWT,
     scheduleController.getAllSchedules
   );
   server.get(
-    "/dates/:date",
+    "/schedules/:date",
     authValidator.validateJWT,
     scheduleValidator.validateGetScheduleByParams,
     scheduleController.getScheduleByParams
   );
   server.get(
-    "/dates/:date/:cav",
+    "/schedules/:date/:cav",
     authValidator.validateJWT,
     scheduleValidator.validateGetScheduleByParams,
     scheduleController.getScheduleByParams
   );
   server.get(
-    "/dates/:date/:cav/:eventType",
+    "/schedules/:date/:cav/:eventType",
     authValidator.validateJWT,
     scheduleValidator.validateGetScheduleByParams,
     scheduleController.getScheduleByParams
   );
   server.get(
-    "/dates/:date/:cav/:eventType/:hour",
+    "/schedules/:date/:cav/:eventType/:hour",
     authValidator.validateJWT,
     scheduleValidator.validateGetScheduleByParams,
     scheduleController.getScheduleByParams
   );
   server.put(
-    "/dates/:date/:cav/:eventType/:hour",
+    "/schedules/:date/:cav/:eventType/:hour",
     authValidator.validateJWT,
     scheduleValidator.validateUpdateSchedule,
     scheduleController.updateSchedule
   );
   server.del(
-    "/dates/:date/:cav/:eventType/:hour",
+    "/schedules/:date/:cav/:eventType/:hour",
     authValidator.validateJWT,
     scheduleValidator.validateDeleteSchedule,
     scheduleController.deleteSchedule
