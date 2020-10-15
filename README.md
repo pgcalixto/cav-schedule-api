@@ -103,7 +103,8 @@ TODO:
 - [x] Integração contínua (GitHub actions)
 - [x] Documentação no README
 - [x] Documentação da API (Swagger)
-- [ ] Testes unitários
+- [x] Testes unitários
+- [ ] Testes unitários de mais serviços (user, schedule)
 - [x] Testes de API (car, cav, schedule)
 - [ ] Testes de API (auth, user)
 - [ ] Reforçar testes de API existentes (forçar parâmetros inválidos, _corner

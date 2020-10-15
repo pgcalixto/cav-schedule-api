@@ -7,8 +7,8 @@
     "build": "tsc",
     "start": "node index.js",
     "initDb": "node ./jobs/createDbUser.js && node ./jobs/populateDb.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "test:integration": "node ./jobs/populateDb.js && jest --runInBand",
+    "test": "jest tests/unit",
+    "test:integration": "node ./jobs/populateDb.js && jest --runInBand tests/api",
     "test:integration:docker": "docker-compose -f docker-compose.test.yml down --volumes && docker-compose -f docker-compose.test.yml up --build --abort-on-container-exit",
     "lint": "eslint . --ext .ts",
     "lint:fix": "eslint . --ext .ts --fix"
@@ -37,6 +37,7 @@
     "winston": "^3.3.3"
   },
   "devDependencies": {
+    "@types/faker": "^5.1.2",
     "@types/jest": "^26.0.14",
     "@types/jsonwebtoken": "^8.5.0",
     "@types/mongoose": "^5.7.36",
@@ -50,6 +51,7 @@
     "eslint": "^7.11.0",
     "eslint-config-prettier": "^6.12.0",
     "eslint-plugin-prettier": "^3.1.4",
+    "faker": "^5.1.0",
     "jest": "^26.5.3",
     "prettier": "2.1.2",
     "supertest": "^5.0.0",
