@@ -109,6 +109,7 @@ TODO:
 - [ ] Testes de API (auth, user)
 - [ ] Reforçar testes de API existentes (forçar parâmetros inválidos, _corner
       cases_)
+- [x] Gerar dados aleatórios para testes unitários (faker.js)
 - [ ] Gerar dados aleatórios para testes de API (faker.js)
 - [ ] Estabelecer uma métrica mínima obrigatória de cobertura
 - [ ] Salvar de forma segura a senha de usuário no banco (hash + salt?)
