@@ -85,7 +85,8 @@ O login é feito com email e senha salvos no banco.
 
 ### Testes unitários
 
-[ A SER FEITO ]
+Existem testes unitários de 2 serviços, `carService` e `cavService`, que podem
+ser executados com `npm test`.
 
 ### Testes de integração / Testes de API
 
@@ -93,7 +94,7 @@ Existem testes de API dos principais _endpoints_, que podem ser executados com
 `npm run test:integration`, ou em sua versão conteinerizada (recomendado):
 `npm run test:integration:docker`.
 
-TODO:
+## TODO
 
 - [x] Licença de código aberto
 - [x] Validação de parâmetros da requisição HTTP (Joi)
