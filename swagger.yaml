@@ -408,7 +408,7 @@ paths:
     get:
       tags:
       - "schedules"
-      summary: "Obtenha os horários de um dia"
+      summary: "Obtenha os agendamentos de um dia"
       parameters:
       - name: "x-access-token"
         in: "header"
@@ -443,7 +443,7 @@ paths:
     get:
       tags:
       - "schedules"
-      summary: "Obtenha os horários de um dia e CAV"
+      summary: "Obtenha os agendamentos de um dia e CAV"
       parameters:
       - name: "x-access-token"
         in: "header"
@@ -486,7 +486,7 @@ paths:
     get:
       tags:
       - "schedules"
-      summary: "Obtenha os horários de um dia, CAV e tipo de evento"
+      summary: "Obtenha os agendamentos de um dia, CAV e tipo de evento"
       parameters:
       - name: "x-access-token"
         in: "header"
@@ -540,7 +540,7 @@ paths:
     get:
       tags:
       - "schedules"
-      summary: "Obtenha os horários de um dia, CAV, tipo de evento e hora"
+      summary: "Obtenha o agendamento de um dia, CAV, tipo de evento e hora"
       parameters:
       - name: "x-access-token"
         in: "header"
