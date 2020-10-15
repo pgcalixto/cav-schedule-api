@@ -16,7 +16,7 @@ atendimento.
 Para rodar a versão conteinerizada da aplicação, populando o banco com dados com
 valores iniciais, basta executar:
 
-```
+```bash
 docker-compose up
 docker-compose down
 npm run test:integration:docker
@@ -52,7 +52,7 @@ Para popular uma instância do banco com dados iniciais do diretório
 `data/init/`, deve-se exportar a variável de ambiente `POPULATE_DB=true` e
 executar:
 
-```
+```bash
 npm run initDb
 ```
 
@@ -61,7 +61,7 @@ o arquivo `.env.dev` carregado com valores iniciais. Essa versão persiste o
 banco no diretório `data/db/`. Para usar essa solução, deve-se executar
 `docker-compose up`:
 
-```
+```bash
 # sobe as instâncias de Docker da aplicação
 # --build opcional, caso deseje-se forçar o rebuild da imagem
 docker-compose up --build
