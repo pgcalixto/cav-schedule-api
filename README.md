@@ -1,5 +1,9 @@
 # cav-schedule-api
 
+[![Actions Status](https://github.com/pgcalixto/cav-schedule-api/workflows/Integration/badge.svg)](https://github.com/pgcalixto/cav-schedule-api/actions)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=pgcalixto_cav-schedule-api&metric=alert_status)](https://sonarcloud.io/dashboard?id=pgcalixto_cav-schedule-api)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=pgcalixto_cav-schedule-api&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=pgcalixto_cav-schedule-api)
+
 CAV Schedule API: API para agendamento de visitas e gerenciamento de centros de
 atendimento.
 
@@ -116,3 +120,4 @@ Existem testes de API dos principais _endpoints_, que podem ser executados com
 - [ ] Estabelecer uma métrica mínima obrigatória de cobertura
 - [ ] Salvar de forma segura a senha de usuário no banco (hash + salt?)
 - [ ] Hospedar um servidor _mock_ para fácil visualização (Heroku? Swagger?)
+- [x] Adicionar _badges_
