@@ -112,6 +112,7 @@ Existem testes de API dos principais _endpoints_, que podem ser executados com
       cases_)
 - [x] Gerar dados aleatórios para testes unitários (faker.js)
 - [ ] Gerar dados aleatórios para testes de API (faker.js)
+- [x] Configurar análise estática de código
 - [ ] Estabelecer uma métrica mínima obrigatória de cobertura
 - [ ] Salvar de forma segura a senha de usuário no banco (hash + salt?)
 - [ ] Hospedar um servidor _mock_ para fácil visualização (Heroku? Swagger?)
