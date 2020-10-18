@@ -2,7 +2,7 @@ import * as restify from "restify";
 import * as restifyErrors from "restify-errors";
 import { StatusCodes } from "http-status-codes";
 import carService from "../services/carService";
-import logger from "../services/loggerService";
+import loggerService from "../services/loggerService";
 
 async function createCar(
   req: restify.Request,
@@ -22,7 +22,7 @@ async function createCar(
 
     return next();
   } catch (err) {
-    logger.error(err);
+    loggerService.error(err);
 
     return next(err);
   }
@@ -40,7 +40,7 @@ async function getAllCars(
 
     return next();
   } catch (err) {
-    logger.error(err);
+    loggerService.error(err);
 
     return next(err);
   }
@@ -64,7 +64,7 @@ async function getCarById(
 
     return next();
   } catch (err) {
-    logger.error(err);
+    loggerService.error(err);
 
     return next(err);
   }
@@ -86,7 +86,7 @@ async function updateCarInfo(
 
     return next();
   } catch (err) {
-    logger.error(err);
+    loggerService.error(err);
 
     return next(err);
   }

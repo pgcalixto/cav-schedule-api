@@ -2,7 +2,7 @@ import { createLogger, format, transports } from "winston";
 import { name as serviceName } from "../../package.json";
 
 // TODO: improve log messages
-const logger = createLogger({
+const loggerService = createLogger({
   level: "info",
   format: format.combine(
     format.timestamp({
@@ -16,4 +16,4 @@ const logger = createLogger({
   transports: [new transports.Console()],
 });
 
-export default logger;
+export default loggerService;

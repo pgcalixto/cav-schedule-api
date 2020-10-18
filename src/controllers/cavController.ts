@@ -2,7 +2,7 @@ import * as restify from "restify";
 import * as restifyErrors from "restify-errors";
 import { StatusCodes } from "http-status-codes";
 import cavService from "../services/cavService";
-import logger from "../services/loggerService";
+import loggerService from "../services/loggerService";
 
 async function createCav(
   req: restify.Request,
@@ -18,7 +18,7 @@ async function createCav(
 
     return next();
   } catch (err) {
-    logger.error(err);
+    loggerService.error(err);
 
     return next(err);
   }
@@ -36,7 +36,7 @@ async function getAllCavs(
 
     return next();
   } catch (err) {
-    logger.error(err);
+    loggerService.error(err);
 
     return next(err);
   }
@@ -60,7 +60,7 @@ async function getCavByName(
 
     return next();
   } catch (err) {
-    logger.error(err);
+    loggerService.error(err);
 
     return next(err);
   }
@@ -84,7 +84,7 @@ async function updateCavInfo(
 
     return next();
   } catch (err) {
-    logger.error(err);
+    loggerService.error(err);
 
     return next(err);
   }

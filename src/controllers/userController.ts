@@ -1,8 +1,8 @@
 import * as restify from "restify";
 import * as restifyErrors from "restify-errors";
 import { StatusCodes } from "http-status-codes";
+import loggerService from "../services/loggerService";
 import userService from "../services/userService";
-import logger from "../services/loggerService";
 
 async function createUser(
   req: restify.Request,
@@ -18,7 +18,7 @@ async function createUser(
 
     return next();
   } catch (err) {
-    logger.error(err);
+    loggerService.error(err);
 
     return next(err);
   }
@@ -36,7 +36,7 @@ async function getAllUsers(
 
     return next();
   } catch (err) {
-    logger.error(err);
+    loggerService.error(err);
 
     return next(err);
   }
@@ -60,7 +60,7 @@ async function getUserById(
 
     return next();
   } catch (err) {
-    logger.error(err);
+    loggerService.error(err);
 
     return next(err);
   }
@@ -84,7 +84,7 @@ async function updateUserInfo(
 
     return next();
   } catch (err) {
-    logger.error(err);
+    loggerService.error(err);
 
     return next(err);
   }

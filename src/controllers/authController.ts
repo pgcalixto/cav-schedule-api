@@ -1,7 +1,7 @@
 import * as restify from "restify";
 import * as restifyErrors from "restify-errors";
 import * as jwt from "jsonwebtoken";
-import logger from "../services/loggerService";
+import loggerService from "../services/loggerService";
 import userService from "../services/userService";
 
 const SECRET = process.env.JWT_SECRET as string;
@@ -30,7 +30,7 @@ async function login(
 
     return next();
   } catch (err) {
-    logger.error(err);
+    loggerService.error(err);
 
     return next(err);
   }

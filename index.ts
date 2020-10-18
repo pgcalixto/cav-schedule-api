@@ -1,7 +1,7 @@
 import { connection as dbConnection } from "./src/infra/mongoDB";
 import * as restify from "restify";
 import corsMiddleware from "restify-cors-middleware";
-import logger from "./src/services/loggerService";
+import loggerService from "./src/services/loggerService";
 import authRoutes from "./src/routes/authRoutes";
 import carRoutes from "./src/routes/carRoutes";
 import cavRoutes from "./src/routes/cavRoutes";
@@ -34,7 +34,7 @@ server.listen(PORT, function () {
 });
 
 dbConnection.then().catch((err) => {
-  logger.error(err);
+  loggerService.error(err);
 
   throw err;
 });

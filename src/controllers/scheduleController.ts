@@ -1,6 +1,6 @@
 import * as restify from "restify";
+import loggerService from "../services/loggerService";
 import scheduleService from "../services/scheduleService";
-import logger from "../services/loggerService";
 
 async function deleteSchedule(
   req: restify.Request,
@@ -21,7 +21,7 @@ async function deleteSchedule(
 
     return next();
   } catch (err) {
-    logger.error(err);
+    loggerService.error(err);
 
     return next(err);
   }
@@ -39,7 +39,7 @@ async function getAllSchedules(
 
     return next();
   } catch (err) {
-    logger.error(err);
+    loggerService.error(err);
 
     return next(err);
   }
@@ -57,7 +57,7 @@ async function getScheduleByParams(
 
     return next();
   } catch (err) {
-    logger.error(err);
+    loggerService.error(err);
 
     return next(err);
   }
@@ -83,7 +83,7 @@ async function updateSchedule(
 
     return next();
   } catch (err) {
-    logger.error(err);
+    loggerService.error(err);
 
     return next(err);
   }

@@ -3,8 +3,8 @@ import * as restifyErrors from "restify-errors";
 import * as jwt from "jsonwebtoken";
 import Joi from "joi";
 import { validate } from "./validator";
+import loggerService from "../services/loggerService";
 import userService from "../services/userService";
-import logger from "../services/loggerService";
 import { IUserDocument } from "../models/userModel";
 
 const SECRET = process.env.JWT_SECRET as string;
@@ -42,7 +42,7 @@ async function validateJWT(
 
     (req as IUserRequest).user = user;
   } catch (err) {
-    logger.error(err);
+    loggerService.error(err);
 
     return next(
       new restifyErrors.InternalError("Failed to authenticate token.")
