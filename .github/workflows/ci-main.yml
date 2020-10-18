@@ -1,4 +1,4 @@
-name: Integration and static analysis
+name: Integration
 on:
   push:
     branches:

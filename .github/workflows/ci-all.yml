@@ -1,4 +1,4 @@
-name: CI
+name: Quick checks
 on: push
 jobs:
   build:
