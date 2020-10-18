@@ -18,3 +18,9 @@ jobs:
         run: npm test
       - name: Integration tests
         run: npm run test:integration:docker
+      - name: Repository Dispatch
+        uses: peter-evans/repository-dispatch@v1
+        if: github.ref == 'refs/heads/master'
+        with:
+          token: ${{ secrets.DISPATCH_CI_TOKEN }}
+          event-type: ci-finished
